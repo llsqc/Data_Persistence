@@ -13,7 +13,7 @@ public class ExcelTool
     public static string EXCEL_PATH = Application.dataPath + "/ArtRes/Excel/";
     public static string DATA_CLASS_PATH = Application.dataPath + "/Scripts/ExcelData/DataClass/";
     public static string DATA_CONTAINER_PATH = Application.dataPath + "/Scripts/ExcelData/Container/";
-    public static string DATA_BINARY_PATH = Application.streamingAssetsPath + "/Binary/";
+
     public static int BEGIN_INDEX = 4;
 
     [MenuItem("GameTool/GenerateExcel")]
@@ -82,10 +82,11 @@ public class ExcelTool
 
     private static void GenerateExcelBinary(DataTable table)
     {
-        if (!Directory.Exists(DATA_BINARY_PATH))
-            Directory.CreateDirectory(DATA_BINARY_PATH);
+        if (!Directory.Exists(BinaryDataMgr.DATA_BINARY_PATH))
+            Directory.CreateDirectory(BinaryDataMgr.DATA_BINARY_PATH);
 
-        using (FileStream fs = new FileStream(DATA_BINARY_PATH + table.TableName + ".bytes", FileMode.OpenOrCreate,
+        using (FileStream fs = new FileStream(BinaryDataMgr.DATA_BINARY_PATH + table.TableName + ".bytes",
+                   FileMode.OpenOrCreate,
                    FileAccess.Write))
         {
             fs.Write(BitConverter.GetBytes(table.Rows.Count - BEGIN_INDEX), 0, 4);
