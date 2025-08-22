@@ -9,13 +9,14 @@ using UnityEngine;
 
 public class BinaryDataMgr
 {
-    private static BinaryDataMgr _instance = new BinaryDataMgr();
-    public static BinaryDataMgr Instance => _instance;
     public static string DATA_BINARY_PATH = Application.streamingAssetsPath + "/Binary/";
 
     private Dictionary<string, object> tableDic = new Dictionary<string, object>();
 
     private static string SAVE_PATH = Application.persistentDataPath + "/BinaryData/";
+
+    private static BinaryDataMgr _instance = new BinaryDataMgr();
+    public static BinaryDataMgr Instance => _instance;
 
     private BinaryDataMgr()
     {
